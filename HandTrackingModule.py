@@ -41,7 +41,7 @@ class handDetector():
             myHand = self.results.multi_hand_landmarks[handNo]
 
             for id, lm in enumerate(myHand.landmark):
-                print(id,lm)
+               # print(id,lm)
                 h,w,c=img.shape
                 cx,cy = int(lm.x*w),int(lm.y*h)
                 lmList.append([id,cx,cy])
@@ -68,7 +68,8 @@ def main():
     
         cv2.putText(img, str(int(fps)), (10,70), cv2.FONT_HERSHEY_COMPLEX_SMALL, 3, (255,0,255),3)
         cv2.imshow("Image",img)
-        cv2.waitKey(1)
+        if cv2.waitKey(1) == ord('q'):
+            break
     
     
 if __name__=='__main__':
